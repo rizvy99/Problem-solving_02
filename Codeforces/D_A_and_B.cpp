@@ -5,7 +5,7 @@
 #define rev(x) reverse(all(x))
 #define sortall(x) sort(all(x))
 using namespace std;
-ll solve(int n, const string& s, char ch) {
+ll solve(int n, const string& s, char ch){
     vector<ll>v;  
     for (int i = 0; i < n;i++){
         if (s[i] == ch){
@@ -23,7 +23,7 @@ ll solve(int n, const string& s, char ch) {
     ll div = v1[(k - 1) / 2];
     ll mx = max(0LL, min((ll)n - k, div));
     ll sum = 0;
-    for (auto val : v1) {
+    for (auto val : v1){
         sum += abs(val - mx);
     }
     return sum;
