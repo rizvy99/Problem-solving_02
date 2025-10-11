@@ -14,7 +14,9 @@ int main() {
         int n,a,b;
         cin>>n>>a>>b;
         int ans = (n+a-1)/a;
-        if(a>b){cout<<1<<el;}
+        if(a>b){
+            cout<<1<<el;
+        }
         else{
             cout<<ans<<el;
         }

@@ -8,9 +8,15 @@ using namespace std;
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    int n;
-    cin>>n;
-    int ans = __builtin_popcount(n);
-    cout<<ans<<el;
+    string s;
+    cin>>s;
+    int n= s.size();
+    int div =n/2;
+    for(int i=0;i<div;i++){
+        cout<<s[i];
+    }
+    for(int i=div+1;i<n;i++){
+        cout<<s[i];
+    }cout<<el;
     return 0;
 }

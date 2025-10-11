@@ -1,64 +1,75 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
+#define ll long long int
+#define el "\n"
+#define all(x) x.begin(), x.end()
+#define rev(x) reverse(all(x))
+#define sortall(x) sort(all(x))
 using namespace std;
-
 int main() {
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    cin.tie(0);
+    int t;
+    cin>>t;
+    while(t--){
+         ll n, m;
+    cin >> n >> m;
 
-    int T; 
-    cin >> T;   // টেস্ট কেস সংখ্যা
+     
+    vector<vector<ll>> ve(n, vector<ll>(m));
+    vector<ll> p(n, -16);
 
-    while (T--) {
-        int n, m;
-        cin >> n >> m;
+    bool isValid = true; // সমাধান সম্ভব কিনা চেকের জন্য
+    ll cowIndex = 0;     // গরুর ইনডেক্স কাউন্টার
 
-        vector<vector<int>> cards(n, vector<int>(m));
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                cin >> cards[i][j];
-            }
-            sort(cards[i].begin(), cards[i].end()); // প্রতিটি গরুর কার্ড ছোট থেকে বড় সাজাই
+    // প্রতিটি গরুর কার্ড ইনপুট নেওয়া
+    for (ll cow = 0; cow < n; cow++) {
+
+        // গরু cow-এর সব কার্ড ইনপুট নিচ্ছি
+        for (ll j = 0; j < m; j++) {
+            cin >> ve[cow][j];
         }
 
-        vector<int> perm(n);
-        iota(perm.begin(), perm.end(), 0); // [0,1,2,...,n-1]
+        // গরু cow-এর সবচেয়ে ছোট কার্ড বের করছি
+        ll minCard = *min_element(ve[cow].begin(), ve[cow].end());
 
-        bool found = false;
+        // যদি ছোট কার্ডটি n-এর কম হয়, তাহলে সেটি কোন ইনডেক্সে থাকবে তা সংরক্ষণ করো
+        if (minCard < n) {
+            p[minCard] = cowIndex;
+        }
 
-        // সব permutation চেক করা
-        do {
-            vector<int> idx(n, 0); // প্রতিটি গরুর কোন কার্ড ব্যবহার হয়েছে
-            int pile = -1;
-            bool ok = true;
+        // সব গরুর জন্য cowIndex বাড়াও
+        cowIndex++;
 
-            for (int round = 0; round < m && ok; round++) {
-                for (int k = 0; k < n; k++) {
-                    int cow = perm[k];
-                    // এই গরুর ডেকে pile এর চেয়ে বড় কার্ড খুঁজে বের করা
-                    while (idx[cow] < m && cards[cow][idx[cow]] <= pile) {
-                        idx[cow]++;
-                    }
-                    if (idx[cow] == m) { 
-                        ok = false; 
-                        break; 
-                    }
-                    pile = cards[cow][idx[cow]];
-                    idx[cow]++;
-                }
-            }
+        // শর্ত: minCard অবশ্যই n-এর ছোট হতে হবে
+        if (minCard >= n) {
+            isValid = false;
+        }
 
-            if (ok) {
-                found = true;
-                for (int i = 0; i < n; i++) {
-                    cout << perm[i] + 1 << " "; // +1 কারণ cow index 1-based
-                }
-                cout << "\n";
+        // গরুর কার্ডগুলো sort করা
+        sort(ve[cow].begin(), ve[cow].end());
+
+        // এখন যাচাই করা হচ্ছে adjacent কার্ডের পার্থক্য n কিনা
+        ll lastCard = ve[cow][0] - n;
+        for (ll card : ve[cow]) {
+            if (lastCard + n != card) {
+                isValid = false;
                 break;
             }
+            lastCard = card;
+        }
+    }
 
-        } while (next_permutation(perm.begin(), perm.end()));
+    // যদি কোনো শর্ত ভাঙে, তাহলে কোনো সমাধান নেই
+    if (!isValid) {
+        cout << "-1\n";
+        return;
+    }
 
-        if (!found) cout << -1 << "\n";
+    // অন্যথায় p অ্যারে থেকে permutation আউটপুট দাও
+    for (ll x : p) {
+        cout << (x + 1) << " ";
+    }
+    cout << "\n";
     }
 
     return 0;

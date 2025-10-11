@@ -50,7 +50,7 @@ int main() {
             }else{
                 cout<<ans<<el;
             }
-           // cout << (ans == n ? -1 : ans) << "\n";
+            
         }
      
     }
