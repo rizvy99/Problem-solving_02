@@ -14,7 +14,7 @@ int main() {
         ll n,m;
         cin>>n>>m;
         vector<string>str(n);
-        for(int i=0;i<n;i++){
+        for(ll i=0;i<n;i++){
             cin>>str[i];
         }
         bool ok=true;
@@ -23,13 +23,13 @@ int main() {
                 if(str[i][j]=='1'){
                     bool left =false,top =false;
                     for(ll k=0;k<i;k++){
-                        if(str[i][k]=='0'){
+                        if(str[k][j]=='0'){
                             left =true;
                             break;
                         }
                     }
                     for(ll k=0;k<j;k++){
-                        if(str[k][j]=='0'){
+                        if(str[i][k]=='0'){
                             top =true;
                             break;
                         }
