@@ -39,7 +39,7 @@ int main(){
     int t;
     cin>>t;
     while(t--){
-        solve();
+        solve();r
     }
 
     return 0;
