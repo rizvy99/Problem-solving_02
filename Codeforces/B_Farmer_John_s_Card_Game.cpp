@@ -5,72 +5,46 @@
 #define rev(x) reverse(all(x))
 #define sortall(x) sort(all(x))
 using namespace std;
-int main() {
+int main(){
     ios::sync_with_stdio(false);
     cin.tie(0);
     int t;
     cin>>t;
     while(t--){
-         ll n, m;
-    cin >> n >> m;
-
-     
-    vector<vector<ll>> ve(n, vector<ll>(m));
-    vector<ll> p(n, -16);
-
-    bool isValid = true; // সমাধান সম্ভব কিনা চেকের জন্য
-    ll cowIndex = 0;     // গরুর ইনডেক্স কাউন্টার
-
-    // প্রতিটি গরুর কার্ড ইনপুট নেওয়া
-    for (ll cow = 0; cow < n; cow++) {
-
-        // গরু cow-এর সব কার্ড ইনপুট নিচ্ছি
-        for (ll j = 0; j < m; j++) {
-            cin >> ve[cow][j];
-        }
-
-        // গরু cow-এর সবচেয়ে ছোট কার্ড বের করছি
-        ll minCard = *min_element(ve[cow].begin(), ve[cow].end());
-
-        // যদি ছোট কার্ডটি n-এর কম হয়, তাহলে সেটি কোন ইনডেক্সে থাকবে তা সংরক্ষণ করো
-        if (minCard < n) {
-            p[minCard] = cowIndex;
-        }
-
-        // সব গরুর জন্য cowIndex বাড়াও
-        cowIndex++;
-
-        // শর্ত: minCard অবশ্যই n-এর ছোট হতে হবে
-        if (minCard >= n) {
-            isValid = false;
-        }
-
-        // গরুর কার্ডগুলো sort করা
-        sort(ve[cow].begin(), ve[cow].end());
-
-        // এখন যাচাই করা হচ্ছে adjacent কার্ডের পার্থক্য n কিনা
-        ll lastCard = ve[cow][0] - n;
-        for (ll card : ve[cow]) {
-            if (lastCard + n != card) {
-                isValid = false;
-                break;
+        int n,m;
+        cin>>n>>m;
+        vector<vector<int>> v(n,vector<int>(m)); 
+        vector<ll>mn_crd(n);
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                cin>>v[i][j];
             }
-            lastCard = card;
+            sort(v[i].begin(),v[i].end());
+            mn_crd[i]=v[i][0];
+            for(int j=1;j<m;j++){
+                if(v[i][j]-v[i][j-1]!=n){
+                    mn_crd[i]=-1;
+                }
+            }
         }
+        bool ok=true;
+        for(int i=0;i<n;i++){
+            if(mn_crd[i]==-1){
+                ok=false;
+            }
+        }
+        if(!ok){
+            cout<<-1<<el;
+            continue;
+        }
+        vector<int>v1(n),v2(n);
+        for(int i=0;i<n;i++){
+            int inx = mn_crd[i]%n;
+            v2[inx]=i+1;
+        }
+        for(int i=0;i<n;i++){
+            cout<<v2[i]<<" ";
+        }cout<<el;
     }
-
-    // যদি কোনো শর্ত ভাঙে, তাহলে কোনো সমাধান নেই
-    if (!isValid) {
-        cout << "-1\n";
-        return;
-    }
-
-    // অন্যথায় p অ্যারে থেকে permutation আউটপুট দাও
-    for (ll x : p) {
-        cout << (x + 1) << " ";
-    }
-    cout << "\n";
-    }
-
     return 0;
 }
