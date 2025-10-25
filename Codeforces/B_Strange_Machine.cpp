@@ -22,14 +22,14 @@ int main() {
             int i = 0;
             while(a > 0){
                 for(int j = 0;j<n && a>0;j++){
-                    if(s[i] == 'A'){
+                    if(s[i]=='A'){
                         a-=1;
                     }
                     else{
                         a/=2;
                     }
                     cnt++;
-                    i = (i+1)%n;
+                    i=(i+1)%n;
                 }
                 if(a>1000000 && count(s.begin(),s.end(),'A')==n){
                     cnt+=(a/n)*n;
