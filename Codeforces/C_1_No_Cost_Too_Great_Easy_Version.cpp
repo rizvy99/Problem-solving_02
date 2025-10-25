@@ -7,7 +7,6 @@
 using namespace std;
 const int mx = 200000 + 10;
 vector<int> v;
-
 void solve(int n){
     v.resize(n+1);
     iota(v.begin(), v.end(), 0);
@@ -21,7 +20,6 @@ void solve(int n){
         }
     }
 }
-
 set<int> get_primes(int x){
     set<int> s;
     while(x > 1){
