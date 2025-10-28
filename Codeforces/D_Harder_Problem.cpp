@@ -15,26 +15,26 @@ int main() {
         int n;
         cin >> n;
         vector<int> a(n), b(n);
-        for (int i = 0; i < n; ++i) {
-            cin >> a[i];
+        for(int i = 0;i<n;i++){
+            cin>>a[i];
         }
-        map<int, int> freq;  
-        int Freq = 0;
-        int current = a[0];
-
-        for (int i = 0; i < n;i++) {
-            freq[a[i]]++;
-            if (freq[a[i]] >Freq || (freq[a[i]] == Freq && a[i] < current)) {
-                Freq = freq[a[i]];
-                current = a[i];
+        set<ll>seen;
+        int alt =1;
+        for(int i=0;i<n;i++){
+            if(seen.count(a[i])){
+                while(seen.count(alt) || alt==a[i]){
+                    alt=(alt%n)+1;  
+                }
+                b[i] = alt;
+                seen.insert(alt);
+            }else{
+                b[i]=a[i];
+                seen.insert(a[i]);
             }
-            b[i] = current;  
         }
-
-        for (int i = 0; i < n; i++) {
-            cout << b[i] << " ";
-        }
-        cout << el;
+        for(auto u:b){
+            cout<<u<<" ";
+        }cout<<el;
     }
     return 0 ;
 }
