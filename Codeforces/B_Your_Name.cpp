@@ -11,14 +11,18 @@ int main() {
     int t;
     cin>>t;
     while(t--){
-         int a,b,c,d;
-         cin>>a>>b>>c>>d;
-         if(a==b && b==c && c== d && d==a){
+        int n;
+        cin>>n;
+        string s,sr;
+        cin>>s>>sr;
+        sort(s.begin(),s.end());
+        sort(sr.begin(),sr.end());
+        if(s==sr){
             cout<<"YES"<<el;
-         }else{
+        }else{
             cout<<"NO"<<el;
-         }
+        }
+     
     }
-
     return 0;
 }
