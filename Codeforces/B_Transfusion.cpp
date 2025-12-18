@@ -28,7 +28,7 @@ int main() {
         }
         int od_cnt=n/2,evn_cnt=n/2;
         if(n & 1){
-            evn_cnt++;
+            evn_cnt++;ri
         }
         if(od_sum%od_cnt!=0 || evn_sum%evn_cnt!=0 || od_sum/od_cnt!=evn_sum/evn_cnt){
             cout << "NO"<<el;
