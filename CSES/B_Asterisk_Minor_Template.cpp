@@ -15,7 +15,7 @@ void solve(){
             for(int j=0;j<n_b-1;j++){
                 if(a[i]==b[j] && a[i+1]==b[j+1]){
                     cout<<"YES"<<el;
-                    cout<<"*"<<b[j]<<b[j+1]<<"*"<<el;
+                    cout<<"*"<<b[j]<<bri[j+1]<<"*"<<el;
                     return;
                 }
             }

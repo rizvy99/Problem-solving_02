@@ -17,7 +17,6 @@ int main() {
         mx = max(mx,a[i]);
         sum += a[i];
     }
-
     ll l=mx, r=sum, ans=r;
     while(l<=r){
         ll mid = (l+r)/2;
@@ -38,5 +37,7 @@ int main() {
             l=mid+1;
         }
     }
-    cout<<ans;
+    cout<<ans<<el;
+
+    return 0;
 }
