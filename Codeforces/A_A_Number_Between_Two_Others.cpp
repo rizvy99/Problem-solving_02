@@ -12,6 +12,15 @@ int main() {
     int t;
     cin>>t;
     while(t--){
+        ll x,y;
+        cin>>x>>y;
+        ll k = y / x;
+        if(k > 2){
+            cout << "YES" << el;
+        } else {
+            cout << "NO" << el;
+        }
+
     }
     return 0;
 }

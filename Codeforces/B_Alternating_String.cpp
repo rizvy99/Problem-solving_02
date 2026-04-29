@@ -12,6 +12,20 @@ int main() {
     int t;
     cin>>t;
     while(t--){
+        string s;
+        cin >> s;
+
+        int count_a = 0, count_b = 0;
+
+        for (char c : s) {
+            if (c == 'a') count_a++;
+            else count_b++;
+        }
+
+        if (abs(count_a - count_b) <= 1)
+            cout << "YES\n";
+        else
+            cout << "NO\n";
     }
     return 0;
 }
