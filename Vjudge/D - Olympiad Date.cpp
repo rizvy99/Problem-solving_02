@@ -26,7 +26,6 @@ int main() {
                 }
             }
         }
-
         cout << ans <<el;
     }
 
