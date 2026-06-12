@@ -11,29 +11,23 @@ int main() {
     cin.tie(0);
     int t;
     cin>>t;
-    while(t--){ 
+    while(t--){
         int n;
-        cin >> n;
-        vector<int> a(n),b(n);
+        cin>>n;
+        vector<int> a(n);
         for(int i=0;i<n;i++){
             cin>>a[i];
-            b[i]=a[i];
         }
-        sort(b.rbegin(),b.rend());
-        int l=0,r=0;
-        for(int i=0;i<n;i++){
-            if(a[i]!=b[i]){
-                l=i;
-                r = max_element(a.begin()+i,a.end())-a.begin();
+       sort(rbegin(a), rend(a));
+        int cnt=1;
+        for(int i=0;i<n-1;i++){
+            if(a[i]==a[i+1]){
+                cnt++;
+            }else{
                 break;
             }
         }
-        reverse(a.begin()+l, a.begin()+r+1);
-        for(auto u:a){
-            cout<<u<<" ";
-        }
-        cout<<endl;
+        cout<<cnt<<el;
     }
-
     return 0;
 }
