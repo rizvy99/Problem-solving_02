@@ -12,19 +12,15 @@ int main() {
     int t;
     cin>>t;
     while(t--){
-        string s;
-        cin >> s;
-        int cnt = 0;
-        for(int i=0;i<s.size()-1;i++){
-            if(s[i]==s[i+1]){
-                cnt++;
-            }
-        }
-        if(cnt>=3){
-            cout<<"NO"<<el;
+        ll a,b,k;
+        cin>>a>>b>>k;
+        ll g = __gcd(a,b);
+        if(a/g<=k && b/g<=k){
+            cout<<1<<el;
         }else{
-            cout<<"YES"<<el;
+            cout<<2<<el;
+
         }
-    }    
+    }
     return 0;
 }

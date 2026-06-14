@@ -12,19 +12,16 @@ int main() {
     int t;
     cin>>t;
     while(t--){
-        string s;
-        cin >> s;
-        int cnt = 0;
-        for(int i=0;i<s.size()-1;i++){
-            if(s[i]==s[i+1]){
-                cnt++;
-            }
-        }
-        if(cnt>=3){
-            cout<<"NO"<<el;
-        }else{
+        ll n,k,x;
+        cin>>n>>k>>x;
+        ll min_sum=0,max_sum=0;
+        min_sum = k*(k+1)/2;
+        max_sum = k*(2*n-k+1)/2; 
+        if(x<=max_sum && x>=min_sum){
             cout<<"YES"<<el;
+        }else{
+            cout<<"NO"<<el;
         }
-    }    
+    }
     return 0;
 }
