@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+//Alrazi Hosen Rizvy
+#include<bits/stdc++.h>
 #define ll long long int
 #define el "\n"
 #define all(x) x.begin(), x.end()
@@ -9,15 +10,17 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
     int t;
-    cin>>t; 
+    cin>>t;
     while(t--){
         ll a,b;
-        cin>>a>>b;  
-        if(b%a!=0){
-            cout<<(a/__gcd(b,a))*b<<el;
+        cin>>a>>b;
+        ll val = a-b;
+        if(val>1){
+            cout<<"YES"<<el;
         }else{
-            cout<<(b*b)/a<<el;
+            cout<<"NO"<<el;
         }
+
     }
     return 0;
 }
