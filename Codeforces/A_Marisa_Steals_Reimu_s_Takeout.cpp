@@ -12,24 +12,24 @@ int main() {
     int t;
     cin>>t;
     while(t--){
-        int n,k;
-        cin>>n>>k;
+        int n;
+        cin>>n;
         vector<int>v(n);
+        int cnt_0=0,cnt_1=0,cnt_2=0;
         for(int i=0;i<n;i++){
-            
             cin>>v[i];
+            if(v[i]==0){cnt_0++;}
+            else if(v[i]==1){cnt_1++;}
+            else{cnt_2++;}
         }
-        sort(v.begin(),v.end());
-        int cur = 1,mx = 1;
-        for(int i = 1;i<n;i++){
-            if(v[i]-v[i-1]<=k){
-                cur++;
-            }else{
-                cur = 1;
-            }
-            mx = max(mx, cur);
-        }
-        cout<<n-mx<<el;
+        int ans = cnt_0;
+        int p = min(cnt_1, cnt_2);
+        ans += p;
+        cnt_1 -= p;
+        cnt_2 -= p;
+        ans += cnt_1 / 3;
+        ans += cnt_2 / 3;
+        cout<<ans<<el;
     }
     return 0;
 }

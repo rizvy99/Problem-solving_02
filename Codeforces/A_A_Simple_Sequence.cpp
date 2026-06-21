@@ -12,10 +12,15 @@ int main() {
     int t;
     cin>>t;
     while(t--){
-        ll n,a,b;
-        cin>>n>>a>>b;
-        ll ans = (n/3)*min(3*a,b) + min((n%3)*a,b);
-        cout << ans << el;
+        int n;
+        cin>>n;
+        for(int i=n;i>0;i--){
+            cout<<i<<" ";
+        }cout<<el;
+
     }
     return 0;
+     
+    
+     
 }

@@ -12,24 +12,20 @@ int main() {
     int t;
     cin>>t;
     while(t--){
-        int n,k;
-        cin>>n>>k;
-        vector<int>v(n);
+        int n;
+        cin>>n;
+        map<int,int>mp;
+        int x;
+        bool ok=true;
         for(int i=0;i<n;i++){
-            
-            cin>>v[i];
-        }
-        sort(v.begin(),v.end());
-        int cur = 1,mx = 1;
-        for(int i = 1;i<n;i++){
-            if(v[i]-v[i-1]<=k){
-                cur++;
-            }else{
-                cur = 1;
+            for(int j=0;j<n;j++){
+                cin>>x;
+                mp[x]++;
+                if(mp[x]>(n*(n-1))){ok=false;}
             }
-            mx = max(mx, cur);
         }
-        cout<<n-mx<<el;
+        if(ok){cout<<"YES"<<el;}
+        else{cout<<"NO"<<el;}
     }
     return 0;
 }

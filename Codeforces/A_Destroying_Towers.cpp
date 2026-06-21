@@ -12,24 +12,27 @@ int main() {
     int t;
     cin>>t;
     while(t--){
-        int n,k;
-        cin>>n>>k;
+        int n;
+        cin>>n;
         vector<int>v(n);
         for(int i=0;i<n;i++){
-            
             cin>>v[i];
         }
-        sort(v.begin(),v.end());
-        int cur = 1,mx = 1;
-        for(int i = 1;i<n;i++){
-            if(v[i]-v[i-1]<=k){
-                cur++;
+        int ans =0;
+        vector<int>v1;
+        //v1.push_back(v[0]);
+        for(int i=0;i<n-1;i++){
+            if(v[i]<v[i+1]){
+                v[i+1]=v[i];
             }else{
-                cur = 1;
+                continue;
             }
-            mx = max(mx, cur);
         }
-        cout<<n-mx<<el;
+        for(int i=0;i<n;i++){
+            ans+=v[i];
+        }
+        cout<<ans<<el; 
+        
     }
     return 0;
 }
