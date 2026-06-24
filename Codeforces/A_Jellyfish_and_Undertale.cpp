@@ -13,27 +13,16 @@ int main() {
     cin.tie(0);
     int t;
     cin>>t;
-    while(t--){ 
-        int n;
-        cin >> n;
-        ll pref = 0;
-        ll mn = LLONG_MAX;
-        vector<ll>v(n);
-        for(int i=1;i<=n;i++){
-            ll x;
-            cin>>x;
-            pref +=x;
-            
-            mn = min(mn,pref/i);
-            cout<<mn;
-            if(i<n){
-                cout<<" ";
-            }
+    while(t--){
+        int a,b,n;
+        cin>>a>>b>>n;
+        vector<int>v(n);
+        ll ans=b;
+        for(int i=0;i<n;i++){
+            cin>>v[i];
+            ans+= min(v[i],a-1);
         }
-        cout<<el;
+        cout<<ans<<el;
     }
-
     return 0;
 }
- 
- 
