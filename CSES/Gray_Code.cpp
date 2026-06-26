@@ -1,3 +1,4 @@
+// Alrazi Hosen Rizvy
 #include <bits/stdc++.h>
 #define ll long long int
 #define el "\n"
@@ -5,25 +6,24 @@
 #define rev(x) reverse(all(x))
 #define sortall(x) sort(all(x))
 using namespace std;
+#define yes cout << "YES" << el;
+#define no cout << "NO" << el;
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    ll n, x;
+    int n;
     cin >> n;
-    cout << n << " ";
-    while (n != 1)
+    ll x = 1 << n;
+    // cout << x << el;
+    for (int i = 0; i < x; i++)
     {
-        if (n % 2 == 0)
+        int gray = i ^ (i >> 1);
+        for (int j = n - 1; j >= 0; j--)
         {
-            n = n / 2;
+            cout << ((gray >> j) & 1);
         }
-        else
-        {
-            n = (n * 3) + 1;
-        }
-        cout << n << " ";
+        cout << el;
     }
-    cout << el;
     return 0;
 }
